@@ -1,0 +1,52 @@
+spring:
+  jpa:
+    open-in-view: false
+  datasource:
+    druid:
+      #JDBC 配置
+      username: root
+      password: mj031017
+      url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=utf-8
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+      #连接池配置(可选)
+      # 连接池的配置信息初始化大小，最小，最大
+      name: testDruidDataSource
+      initial-size: 5    #初始化连接大小
+      max-active: 20    #最大连接数
+      min-idle: 5        #最小空闲连接数
+      max-wait: 60000   # 配置获取连接等待超时的时间
+
+
+
+      #######监控配置  说明请参考Druid Wiki
+      #配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      filters: stat,wall
+
+      #配置 Web Stat Filter
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: /druid/*,*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico
+        session-stat-enable: true
+        session-stat-max-count: 10
+        principal-session-name: session_name
+        principal-cookie-name: cookie_name
+        profile-enable:
+
+      # Stat View Servlet 配置  配置默认false
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: false   #禁用HTML页面上的“Reset All”功能
+        login-username: root  #监控页面登录的用户名
+        login-password: 1234#监控页面登录的密码
+        #IP白名单(没有配置或者为空，则允许所有访问)
+        allow:
+        #IP黑名单 (存在共同时，deny优先于allow)
+        deny:
+
+      # Spring监控配置，说明请参考Druid Github Wiki，配置_Druid和Spring关联监控配置
+      aop-patterns: com.byw.*
+

@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "jpa.open-in-view",
+      "type": "java.lang.String",
+      "description": "Description for jpa.open-in-view."
+    },
+    {
+      "name": "spring.resources.mvc.static-path-pattern",
+      "type": "java.lang.String",
+      "description": "Description for spring.resources.mvc.static-path-pattern."
+    }
+  ] }

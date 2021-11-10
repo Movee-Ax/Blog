@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" th:replace="_fragments :: head(~{::title})">
+    <!--移动端更好的适应-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/dist/semantic/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/typo.css">
+    <link rel="stylesheet" href="../static/css/my.css">
+    <link rel="stylesheet" href="../static/css/animate.css">
+    <link rel="stylesheet" href="../static/lib/prism/prism.css">
+    <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css">
+    <title>博客详情</title>
+</head>
+<body>
+    <!--导航开始--------------------------------------------->
+    <nav th:replace="_fragments :: menu(1)" class="ui inverted attached segment m-padded-mini m-shadow-small">
+        <div class="ui container">
+            <div class="ui inverted secondary stackable menu">
+                <h2 class="ui teal header item">Blog</h2>
+                <a href="#" class="m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
+                <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
+                <a href="#" class="m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
+                <a href="#" class="m-item item m-mobile-hide"><i class="clone icon"></i>归档</a>
+                <a href="#" class="m-item item m-mobile-hide"><i class="info icon"></i>关于我</a>
+                <div class="right m-item item m-mobile-hide">
+                    <div class="ui action input">
+                        <input type="text" placeholder="输入关键字">
+                        <button class="ui button">搜索</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="#" class="ui m-menu m-toggle black icon button m-right-top m-mobile-show">
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+    <!--导航结束---------------------------------------------->
+
+
+    <!--中间内容开始------------------------------------------>
+    <div id="waypoint" class="m-container-small m-padded-large">
+        <div class="ui container animated bounceInLeft">
+            <!--中间内容头部信息开始-->
+            <div class="ui top attached segment">
+                <div class="ui horizontal link list">
+                    <div class="item">
+                        <img src="../static/images/me.jpg" alt="" class="ui avatar image"/>
+                        <div class="content"><a href="#" class="header">吴慧华</a></div>
+                    </div>
+                    <div class="item">
+                        <i class="calendar icon"></i> 2020-01-01
+                    </div>
+                    <div class="item">
+                        <i class="eye icon"></i> 1000
+                    </div>
+                </div>
+            </div>
+            <!--中间内容头部信息结束-->
+
+            <!--中间内容图片开始-->
+            <div class="ui attached segment">
+                <img src="../static/images/test1.jpg" alt="" class="ui fluid rounded image">
+            </div>
+            <!--中间内容图片结束-->
+
+            <!--中间内容博客内容开始-->
+            <div class="ui attached padded segment">
+                <div class="ui right aligned basic segment">
+                    <div class="ui green basic label">转载</div>
+                </div>
+
+                <!--博客具体内容-->
+                <div id="m-id-content" class="typo typo-selection js-toc-content m-padded-left-right-responsive m-padded-large">
+                    <h2 id="section1">一、关于 <i class="serif">Typo.css</i></h2>
+                    <pre><code class="language-css">p { color: red }</code></pre>
+
+                    <p><i class="serif">Typo.css</i> 的目的是，在一致化浏览器排版效果的同时，构建最适合中文阅读的网页排版。</p>
+                    <h4>现状和如何去做：</h4>
+                    <h2 id="section1">一、关于 <i class="serif">Typo.css</i></h2>
+                    <table class="ui table" summary="Typo.css 的测试平台列表">
+                      <thead>
+                      <tr>
+                        <th>OS/浏览器</th>
+                        <th>Firefox</th>
+                        <th>Chrome</th>
+                        <th>Safari</th>
+                        <th>Opera</th>
+                        <th>IE9</th>
+                        <th>IE8</th>
+                        <th>IE7</th>
+                        <th>IE6</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td>OS X</td>
+                        <td>✔</td>
+                        <td>✔</td>
+                        <td>✔</td>
+                        <td>✔</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                      </tr>
+                      <tr>
+                        <td>Win 7</td>
+                        <td>✔</td>
+                        <td>✔</td>
+                        <td>✔</td>
+                        <td>✔</td>
+                        <td>✔</td>
+                        <td>✔</td>
+                        <td>✔</td>
+                        <td>-</td>
+                      </tr>
+                      <tr>
+                        <td>Win XP</td>
+                        <td>✔</td>
+                        <td>✔</td>
+                        <td>✔</td>
+                        <td>✔</td>
+                        <td>-</td>
+                        <td>✔</td>
+                        <td>✔</td>
+                        <td>✔</td>
+                      </tr>
+                      <tr>
+                        <td>Ubuntu</td>
+                        <td>✔</td>
+                        <td>✔</td>
+                        <td>-</td>
+                        <td>✔</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                      </tr>
+                      </tbody>
+                    </table>
+
+                    <h4>中文排版的重点和难点</h4>
+
+                    <p>在中文排版中，HTML4 的很多标准在语义在都有照顾到。但从视觉效果上，却很难利用单独的 CSS 来实现，像<abbr title="在文字下多加一个点">着重号</abbr>（例：这里<em class="typo-em">强调一下</em>）。在 HTML4 中，专名号标签（<code>&lt;u&gt;</code>）已经被放弃，而
+                      HTML5 被<a href="http://html5doctor.com/u-element/">重新提起</a>。<i class="serif">Typo.css</i> 也根据实际情况提供相应的方案。我们重要要注意的两点是：</p>
+                    <ol>
+                      <li>语义：语义对应的用法和样式是否与中文排版一致</li>
+                      <li>表现：在各浏览器中的字体、大小和缩放是否如排版预期</li>
+                    </ol>
+                    <p>对于这些，<i class="serif">Typo.css</i> 排版项目的中文偏重注意点，都添加在附录中，详见：</p>
+                    <blockquote>
+                      <b>附录一</b>：<a href="#appendix1"><i class="serif">Typo.css</i> 排版偏重点</a>
+                    </blockquote>
+                    <h2 id="section2">二、排版实例：</h2>
+
+
+                    <p>目前已有像百姓网等全面使用 <i class="serif">Typo.css</i> 的项目，测试平台的覆盖，特别是在<abbr title="手机、平板电脑等移动平台">移动端</abbr>上还没有覆盖完主流平台，希望有能力的同学能加入测试行列，或者加入到 <i class="serif">Typo.css</i>
+                      的开发。加入方法：<a href="https://github.com/sofish/Typo.css">参与 <i class="serif">Typo.css</i> 开发</a>。如有批评、建议和意见，也随时欢迎给在 Github 直接提 <a
+                        href="https://github.com/sofish/Typo.css/issues">issues</a>，或给<abbr title="Sofish Lin, author of Typo.css"
+                                                                                            role="author">我</abbr>发<a
+                        href="mailto:sofish@icloud.com">邮件</a>。</p>
+
+
+                    <h2 id="section2">二、排版实例：</h2>
+
+                    <p>提供2个排版实例，第一个中文实例来自于来自于<cite class="typo-unique">张燕婴</cite>的《论语》，由于古文排版涉及到的元素比较多，所以采用《论语》中《学而》的第一篇作为排版实例介绍；第2个来自到经典的
+                      Lorem Ipsum，并加入了一些代码和列表等比较具有代表性的排版元素。</p>
+
+                    <h3 id="section2-1">例1：论语学而篇第一</h3>
+                    <h2 id="section2">二、排版实例：</h2>
+                    <h2 id="section2">二、排版实例：</h2>
+
+                    <p>
+                      <small><b>作者：</b><abbr title="名丘，字仲尼">孔子</abbr>（
+                        <time>前551年9月28日－前479年4月11日</time>
+                        ）
+                      </small>
+                    </p>
+
+                    <h4>本篇引语</h4>
+                </div><br>
+                <!--标签-->
+                <div class=".m-padded-left-right-responsive">
+                    <div class="ui basic teal left pointing label">java</div>
+                </div>
+                <!--赞赏-->
+                <div class="ui center aligned basic segment">
+                    <button id="m-pay-button-id" class="ui orange basic circular button">赞赏</button>
+                </div>
+                <div class="ui m-pay-q flowing popup transition hidden">
+                    <div class="ui orange basic label">
+                        <div class="ui images" style="font-size: inherit !important;">
+                            <div class="image">
+                                <img src="../static/images/wechat.png" alt="" class="ui rounded bordered image" style="width: 120px">
+                                <div>支付宝</div>
+                            </div>
+                            <div class="image">
+                                <img src="../static/images/wechat.png" alt="" class="ui rounded bordered image"  style="width: 120px">
+                                <div>微信</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--中间内容博客内容结束-->
+
+            <!--中间内容博客其他信息开始-->
+            <div class="ui attached positive message">
+                <div class="ui middle aligned grid">
+                    <div class="eleven wide column">
+                        <ul class="list">
+                            <li>作者：movee</li>
+                            <li>发表时间：2020-01-01</li>
+                            <li>版权声明：无</li>
+                            <li>转载说明：请在文末添加二维码</li>
+                        </ul>
+                    </div>
+                    <div class="five wide column">
+                        <img src="../static/images/wechat.png" alt="" class="ui right floated rounded bordered image" style="width: 110px">
+                    </div>
+                </div>
+            </div>
+            <!--中间内容博客其他信息结束-->
+
+            <!--中间内容留言区域开始-->
+            <div id="comment-container" class="ui bottom attached segment">
+                <!--中间内容留言区域列表-->
+                <div class="ui teal segment">
+
+                    <div class="ui comments">
+                        <h3 class="ui dividing header">评论区</h3>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="../static/images/user1.jpg">
+                            </a>
+                            <div class="content">
+                                <a class="author">Matt</a>
+                                <div class="metadata">
+                                    <span class="date">今天下午 5:42</span>
+                                </div>
+                                <div class="text">太赞了！ </div>
+                                <div class="actions">
+                                    <a class="reply">回复</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="../static/images/user2.jpg">
+                            </a>
+                            <div class="content">
+                                <a class="author">Elliot Fu</a>
+                                <div class="metadata">
+                                    <span class="date">昨天上午12:30</span>
+                                </div>
+                                <div class="text">
+                                    <p>這對我的研究是非常有用.謝謝!</p>
+                                </div>
+                                <div class="actions">
+                                    <a class="reply">回复</a>
+                                </div>
+                            </div>
+                            <div class="comments">
+                                <div class="comment">
+                                    <a class="avatar">
+                                        <img src="../static/images/user3.jpg">
+                                    </a>
+                                    <div class="content">
+                                        <a class="author">Jenny Hess</a>
+                                        <div class="metadata">
+                                            <span class="date">刚刚</span>
+                                        </div>
+                                        <div class="text">艾略特你永远是多么正确 :) </div>
+                                        <div class="actions">
+                                            <a class="reply">回复</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="../static/images/user4.jpg">
+                            </a>
+                            <div class="content">
+                                <a class="author">Joe Henderson</a>
+                                <div class="metadata">
+                                    <span class="date">5 天以前</span>
+                                </div>
+                                <div class="text">老兄，这太棒了。非常感谢。 </div>
+                                <div class="actions">
+                                    <a class="reply">回复</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui form">
+                    <div class="field">
+                        <textarea name="content" placeholder="请输入评论信息 ... "></textarea>
+                    </div>
+                    <div class="fields">
+                        <div class="field m-mobile-wide m-margin-bottom-small">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" name="nickname" placeholder="姓名">
+                            </div>
+                        </div>
+                        <div class="field m-mobile-wide m-margin-bottom-small">
+                            <div class="ui left icon input">
+                                <i class="mail icon"></i>
+                                <input type="text" name="email" placeholder="邮箱">
+                            </div>
+                        </div>
+                        <div class="field m-margin-bottom-small m-mobile-wide">
+                            <button class="ui teal button m-mobile-wide"><i class="edit icon"></i>发布</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--中间内容留言区域结束-->
+        </div>
+    </div>
+    <!--中间内容结束------------------------------------------>
+
+
+    <!-- 右边小工具条开始  ---------------->
+    <div id="toolbar" class="m-padded-all m-fixed m-right-bottom" style="display: none;">
+        <div class="ui vertical icon buttons ">
+            <button type="button" class="ui toc-button teal button">文章目录</button>
+            <a href="#comment-container" class="ui teal button">留言</a>
+            <button class="ui wechatReadBut icon button"><i class="weixin icon"></i> 扫码阅读</button>
+            <div id="toTop-button" class="ui icon button"><i class="chevron up icon"></i> 回到首部</div>
+        </div> 
+    </div>
+    <div class="ui toc-comtainer flowing popup transition hidden" style="width: 300px !important;">
+        <ol class="js-toc">
+            
+        </ol>
+    </div>
+    <div id="qrcode" class="ui wechatRead flowing popup transition hidden" style="width: 130px !important">
+        <!-- <img src="../static/images/wechat.png" class="ui rounded image" style="width: 100px" /> -->
+    </div>
+    <!-- 右边小工具条结束  ---------------->
+
+    <!--底部内容开始-->
+    <footer class="ui inverted vertical segment m-padded-massive">
+        <div class="ui center aligned container">
+            <div class="ui inverted divided stackable grid">
+                <div class="three wide column">
+                    <div class="ui inverted link list">
+                        <div class="item">
+                            <img src="../static/images/wechat.png" class="ui rounded image" alt="" style="width: 110px"/>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced">最新博客</h4>
+                    <div class="ui inverted link list">
+                        <a class="item" href="#">testXXXXXXXXX</a>
+                        <a class="item" href="#">testXXXXXXXXX</a>
+                        <a class="item" href="#">testXXXXXXXXX</a>
+                        <a class="item" href="#">testXXXXXXXXX</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced">联系我</h4>
+                    <div class="ui inverted link list">
+                        <a class="item" href="#">Email: 1916339974@qq.com</a>
+                        <a class="item" href="#">QQ: 1916339974</a>
+                    </div>
+                </div>
+                <div class="seven wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced">介绍</h4>
+                    <p class="m-text-thin m-text-spaced m-opacity-mini">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                        XXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+                </div>
+
+            </div>
+            <div class="ui inverted section divider"></div>
+            <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright 2019 - 2020 Huihua wu</p>
+        </div>
+    </footer>
+    <!--底部内容结束------------------------------------------>
+    <th:block th:replace="_fragments :: script">
+        <script src="../static/dist/jquery/jquery-3.4.1.min.js"></script>
+        <script src="../static/dist/semantic/semantic.min.js"></script>
+        <script src="../static/lib/scrollTo/scrollTo.min.js"></script>
+        <script src="../static/lib/prism/prism.js"></script>
+        <script src="../static/lib/tocbot/tocbot.js"></script>
+        <script src="../static/lib/qrcode/qrcode.min.js"></script>
+        <script src="../static/lib/waypoints/waypoints.min.js"></script>
+    </th:block>
+
+<script>
+    $('.m-menu.m-toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('#m-pay-button-id').popup({
+       popup : $('.m-pay-q.popup'),
+        on : 'click',
+        position: 'bottom center'
+    });
+
+    /* 初始化文章目录 */
+    tocbot.init({
+      // 指定在哪放置这个文章目录
+      tocSelector: '.js-toc',
+      // 需要指定为哪个里面的内容生成目录
+      contentSelector: '.js-toc-content',
+      // 指定生成的级别
+      headingSelector: 'h1, h2, h3, h4',
+      // For headings inside relative or absolute positioned containers within content.
+      hasInnerContainers: true
+    });
+
+    $('.toc-button').popup({
+       popup : $('.toc-comtainer.popup'),
+        on : 'click',
+        position: 'left center'
+    });
+    $('.wechatReadBut').popup({
+       popup : $('.wechatRead'),
+        on : 'hover',
+        position: 'left center'
+    });
+
+    var qrcode = new QRCode("qrcode", {
+        text: "http://jindo.dev.naver.com/collie",
+        width: 100,
+        height: 100,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+
+    $('#toTop-button').click(function() {
+        $(window).scrollTo(0,800);
+    });
+
+    var waypoint = new Waypoint({
+      element: document.getElementById('waypoint'),
+      handler: function(direction) {
+        if(direction == 'down') {
+            $('#toolbar').show(400);
+        } else {
+            $('#toolbar').hide(400);
+        }
+      }
+    })
+
+</script>
+</body>
+</html>
