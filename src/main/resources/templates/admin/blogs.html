@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="_fragments :: head(~{::title})">
     <meta charset="UTF-8">
     <!--移动端更好的适应-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/dist/semantic/semantic.min.css">
-    <link rel="stylesheet" href="../static/css/my.css">
     <title>博客管理</title>
 </head>
 <body>
@@ -171,8 +168,15 @@
     <!--底部内容结束------------------------------------------>
 
 
-<script src="../static/dist/jquery/jquery-3.4.1.min.js"></script>
-<script src="../static/dist/semantic/semantic.min.js"></script>
+    <th:block th:replace="_fragments :: script">
+        <script src="../static/dist/jquery/jquery-3.4.1.min.js"></script>
+        <script src="../static/dist/semantic/semantic.min.js"></script>
+        <script src="../static/lib/scrollTo/scrollTo.min.js"></script>
+        <script src="../static/lib/prism/prism.js"></script>
+        <script src="../static/lib/tocbot/tocbot.js"></script>
+        <script src="../static/lib/qrcode/qrcode.min.js"></script>
+        <script src="../static/lib/waypoints/waypoints.min.js"></script>
+    </th:block>
 <script>
     $('.m-menu.m-toggle').click(function () {
         $('.m-item').toggleClass('m-mobile-hide');

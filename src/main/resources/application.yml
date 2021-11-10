@@ -1,6 +1,9 @@
 spring:
   jpa:
-    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: true
   datasource:
     druid:
       #JDBC 配置

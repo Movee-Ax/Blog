@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="_fragments :: head(~{::title})">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -28,8 +28,17 @@
         <i class="sidebar icon"></i>
     </a>
 </nav>
+<br><br><br><br>
 <!--导航结束---------------------------------------------->
-<h1>404</h1>
+ <div class="m-container-small m-padded-massive">
+     <div class="ui error message m-padded-huge">
+         <div class="ui contianer">
+             <h2>404</h2>
+             <p>对不起，你访问的资源不存在</p>
+         </div>
+     </div>
+ </div>
+<br><br><br><br><br><br><br><br><br>
 <footer class="ui inverted vertical segment m-padded-massive">
     <div class="ui center aligned container">
         <div class="ui inverted divided stackable grid">
@@ -59,13 +68,12 @@
             </div>
             <div class="seven wide column">
                 <h4 class="ui inverted header m-text-thin m-text-spaced">介绍</h4>
-                <p class="m-text-thin m-text-spaced m-opacity-mini">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                    XXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+                <p class="m-text-thin m-text-spaced m-opacity-mini">这里是Movee，一个编程爱好者</p>
             </div>
 
         </div>
         <div class="ui inverted section divider"></div>
-        <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright 2019 - 2020 Huihua wu</p>
+        <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright 2021 - 2022 Movee</p>
     </div>
 </footer>
 </body>
