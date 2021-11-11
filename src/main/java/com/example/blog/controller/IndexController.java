@@ -14,6 +14,6 @@ public class IndexController {
 
     @RequestMapping(value = "/1", method = RequestMethod.GET)
     public String blog(){
-        return "admin/index";
+        return "admin/blogs-input";
     }
 }

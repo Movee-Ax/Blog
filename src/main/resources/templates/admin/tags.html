@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/_fragments :: head(~{::title})">
+    <title>分类管理</title>
+</head>
+<body>
+    <!--导航开始--------------------------------------------->
+    <nav th:replace="admin/_fragments :: menu(3)">
+    </nav>
+    <!-- 二级导航 -->
+    <div class="ui attached pointing menu">
+        <div class="ui container">
+            <div class="right menu">
+                <a href="#" th:href="@{/admin/tags/input}" class="teal item">新增</a>
+                <a href="#" th:href="@{/admin/tags}" class="active item">列表</a>
+            </div>
+        </div>
+    </div>
+    <!--导航结束---------------------------------------------->
+
+
+    <!--中间内容开始------------------------------------------>
+    <div class="m-container-small m-padded-large">
+        <div class="ui container">
+            <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+                <i class="close icon"></i>
+                <div class="header">提示：</div>
+                <p th:text="${message}"></p>
+            </div>
+            <table class="ui celled table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>名称</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="tag,iterStat : ${page.content}">
+                    <td th:text="${iterStat.count}"></td>
+                    <td th:text="${tag.name}"></td>
+                    <td>
+                        <a href="#" th:href="@{/admin/tags/{id}/input(id=${tag.id})}" class="ui mini teal basic button">编辑</a>
+                        <a href="#" th:href="@{/admin/tags/{id}/delete(id=${tag.id})}" class="ui mini red basic button">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+                <!-- 中间内容分页开始 -->
+                <tfoot>
+                <tr>
+                    <th colspan="6">
+                        <div class="ui mini pagination menu">
+                            <p th:text="'共' + ${page.totalPages} + '页'" class="item"></p>
+                        </div>
+                        <div class="ui mini pagination menu" th:if="${page.totalPages}>1">
+                            <a th:href="@{/admin/tags/(page=${page.number}-1)}" class="item" th:unless="${page.first}">上一页</a>
+                            <a th:href="@{/admin/tags/(page=${page.number}+1)}" class="item" th:unless="${page.last}">下一页</a>
+                        </div>
+                        <a th:href="@{/admin/tags/input}" class="ui mini right floated teal basic button">新增</a>
+                    </th>
+                </tr>
+                </tfoot>
+                <!-- 中间内容分页结束 -->
+            </table>
+            <!-- 中间内容搜索结果结束 -->
+        </div>
+    </div>
+    <!--中间内容结束------------------------------------------>
+    <br><br><br><br><br><br><br>
+    <!--底部内容开始-->
+    <footer th:replace="admin/_fragments :: footer" class="ui inverted vertical segment m-padded-massive"></footer>
+    <!--底部内容结束------------------------------------------>
+
+
+    <th:block th:replace="_fragments :: script">
+        <script src="../static/dist/jquery/jquery-3.4.1.min.js"></script>
+        <script src="../static/dist/semantic/semantic.min.js"></script>
+        <script src="../static/lib/scrollTo/scrollTo.min.js"></script>
+        <script src="../static/lib/prism/prism.js"></script>
+        <script src="../static/lib/tocbot/tocbot.js"></script>
+        <script src="../static/lib/qrcode/qrcode.min.js"></script>
+        <script src="../static/lib/waypoints/waypoints.min.js"></script>
+    </th:block>
+<script>
+    $('.message .close')
+        .on('click', function () {
+        $(this)
+            .closest('.message')
+            .transition('fade');
+    });
+</script>
+</body>
+</html>

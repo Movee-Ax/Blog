@@ -22,7 +22,7 @@ public class Blog {
     private boolean shareStatement;
     private boolean commentabled;
     private boolean published;
-    private boolean recomment;
+    private boolean recommend;
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
     @Temporal(TemporalType.TIMESTAMP)
@@ -158,12 +158,12 @@ public class Blog {
         this.published = published;
     }
 
-    public boolean isRecomment() {
-        return recomment;
+    public boolean isRecommend() {
+        return recommend;
     }
 
-    public void setRecomment(boolean recomment) {
-        this.recomment = recomment;
+    public void setRecommend(boolean recommend) {
+        this.recommend = recommend;
     }
 
     public Date getCreateTime() {
@@ -195,7 +195,7 @@ public class Blog {
                 ", shareStatement=" + shareStatement +
                 ", commentabled=" + commentabled +
                 ", published=" + published +
-                ", recomment=" + recomment +
+                ", recommend=" + recommend +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 '}';
