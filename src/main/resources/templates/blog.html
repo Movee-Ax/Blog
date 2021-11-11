@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="_fragments :: head(~{::title})">
-    <meta charset="UTF-8">
-    <!--移动端更好的适应-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/dist/semantic/semantic.min.css">
-    <link rel="stylesheet" href="../static/css/typo.css">
-    <link rel="stylesheet" href="../static/css/my.css">
-    <link rel="stylesheet" href="../static/css/animate.css">
-    <link rel="stylesheet" href="../static/lib/prism/prism.css">
-    <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css">
     <title>博客详情</title>
 </head>
 <body>
@@ -46,8 +37,8 @@
             <div class="ui top attached segment">
                 <div class="ui horizontal link list">
                     <div class="item">
-                        <img src="../static/images/me.jpg" alt="" class="ui avatar image"/>
-                        <div class="content"><a href="#" class="header">吴慧华</a></div>
+                        <img th:src="@{/images/me.jpg}" alt="" class="ui avatar image"/>
+                        <div class="content"><a href="#" class="header">Movee</a></div>
                     </div>
                     <div class="item">
                         <i class="calendar icon"></i> 2020-01-01
@@ -347,44 +338,7 @@
     <!-- 右边小工具条结束  ---------------->
 
     <!--底部内容开始-->
-    <footer class="ui inverted vertical segment m-padded-massive">
-        <div class="ui center aligned container">
-            <div class="ui inverted divided stackable grid">
-                <div class="three wide column">
-                    <div class="ui inverted link list">
-                        <div class="item">
-                            <img src="../static/images/wechat.png" class="ui rounded image" alt="" style="width: 110px"/>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="three wide column">
-                    <h4 class="ui inverted header m-text-thin m-text-spaced">最新博客</h4>
-                    <div class="ui inverted link list">
-                        <a class="item" href="#">testXXXXXXXXX</a>
-                        <a class="item" href="#">testXXXXXXXXX</a>
-                        <a class="item" href="#">testXXXXXXXXX</a>
-                        <a class="item" href="#">testXXXXXXXXX</a>
-                    </div>
-                </div>
-                <div class="three wide column">
-                    <h4 class="ui inverted header m-text-thin m-text-spaced">联系我</h4>
-                    <div class="ui inverted link list">
-                        <a class="item" href="#">Email: 1916339974@qq.com</a>
-                        <a class="item" href="#">QQ: 1916339974</a>
-                    </div>
-                </div>
-                <div class="seven wide column">
-                    <h4 class="ui inverted header m-text-thin m-text-spaced">介绍</h4>
-                    <p class="m-text-thin m-text-spaced m-opacity-mini">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                        XXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
-                </div>
-
-            </div>
-            <div class="ui inverted section divider"></div>
-            <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright 2019 - 2020 Huihua wu</p>
-        </div>
-    </footer>
+    <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-massive"></footer>
     <!--底部内容结束------------------------------------------>
     <th:block th:replace="_fragments :: script">
         <script src="../static/dist/jquery/jquery-3.4.1.min.js"></script>
