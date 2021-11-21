@@ -101,6 +101,9 @@
                             <div class="ui mini pagination menu">
                                 <p th:text="'共' + ${page.totalPages} + '页'" class="item"></p>
                             </div>
+                            <div class="ui mini pagination menu">
+                                <p th:text="'第' + (${page.number}+1) + '页'" class="item"></p>
+                            </div>
                             <div class="ui mini pagination menu" th:if="${page.totalPages}>1">
                                 <a onclick="page(this)" th:attr="data-page=${page.number}-1" class="item" th:unless="${page.first}">上一页</a>
                                 <a onclick="page(this)" th:attr="data-page=${page.number}+1" class="item" th:unless="${page.last}">下一页</a>
