@@ -52,4 +52,3 @@ spring:
 
       # Spring监控配置，说明请参考Druid Github Wiki，配置_Druid和Spring关联监控配置
       aop-patterns: com.byw.*
-

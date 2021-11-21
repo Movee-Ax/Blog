@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="head(title)">
     <meta charset="UTF-8">
+    <link th:href="@{/images/me.jpg}" rel="icon">
     <!--移动端更好的适应-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:replace="${title}">博客详情</title>
@@ -10,24 +11,25 @@
     <link rel="stylesheet" href="../static/css/my.css" th:href="@{/css/my.css}">
     <link rel="stylesheet" href="../static/css/animate.css" th:href="@{/css/animate.css}">
     <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">
-    <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css" th:href="@{lib/tocbot/tocbot.css}">
 </head>
 <body>
 <!--导航开始--------------------------------------------->
 <nav th:fragment="menu(n)" class="ui inverted attached segment m-padded-mini m-shadow-small">
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
-            <h2 class="ui teal header item">Blog</h2>
-            <a href="#" class="m-item item m-mobile-hide" th:classappend="${n==1} ? 'active'"><i class="home icon"></i>首页</a>
-            <a href="#" class="m-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="idea icon"></i>分类</a>
-            <a href="#" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="tags icon"></i>标签</a>
-            <a href="#" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="clone icon"></i>归档</a>
-            <a href="#" class="m-item item m-mobile-hide" th:classappend="${n==5} ? 'active'"><i class="info icon"></i>关于我</a>
+            <h2 class="ui teal header item">Movee的小屋</h2>
+            <a href="#" th:href="@{/}" class="m-item item m-mobile-hide" th:classappend="${n==1} ? 'active'"><i class="home icon"></i>首页</a>
+            <a href="#" th:href="@{/types/-1}" class="m-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i class="idea icon"></i>分类</a>
+            <a href="#" th:href="@{/tags/-1}" class="m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="tags icon"></i>标签</a>
+            <a href="#" th:href="@{/archives}" class="m-item item m-mobile-hide" th:classappend="${n==4} ? 'active'"><i class="clone icon"></i>归档</a>
+            <a href="#" th:href="@{/about}" class="m-item item m-mobile-hide" th:classappend="${n==5} ? 'active'"><i class="info icon"></i>关于我</a>
             <div class="right m-item item m-mobile-hide">
-                <div class="ui action input">
-                    <input type="text" placeholder="输入关键字">
-                    <button class="ui button">搜索</button>
-                </div>
+                <form action="#" name="search" th:action="@{/search}" target="_blank" method="post">
+                    <div class="ui icon inverted transparent input m-margin-tb-tiny">
+                        <input type="text" name="query" placeholder="输入关键字" th:value="${query}">
+                        <i onclick="document.forms['search'].submit()" class="search link icon"></i>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -50,12 +52,11 @@
                 </div>
             </div>
             <div class="three wide column">
-                <h4 class="ui inverted header m-text-thin m-text-spaced">最新博客</h4>
+                <h4 class="ui inverted header m-text-thin m-text-spaced">欢迎来到Movee的小破屋</h4>
                 <div class="ui inverted link list">
-                    <a class="item" href="#">testXXXXXXXXX</a>
-                    <a class="item" href="#">testXXXXXXXXX</a>
-                    <a class="item" href="#">testXXXXXXXXX</a>
-                    <a class="item" href="#">testXXXXXXXXX</a>
+                    <a class="item" href="#">Welcome！</a>
+                    <a class="item" href="#">命里有时终须有</a>
+                    <a class="item" href="#">命里无时莫强求</a>
                 </div>
             </div>
             <div class="three wide column">
@@ -85,6 +86,8 @@
     <script src="../static/lib/tocbot/tocbot.js" th:src="@{/lib/tocbot/tocbot.js}"></script>
     <script src="../static/lib/qrcode/qrcode.min.js" th:src="@{/lib/qrcode/qrcode.min.js}"></script>
     <script src="../static/lib/waypoints/waypoints.min.js" th:src="@{/lib/waypoints/waypoints.min.js}"></script>
+    <script src="../static/js/common.js" th:src="@{/js/common.js}"></script>
+
 </th:block>
 </body>
 </html>

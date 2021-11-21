@@ -5,9 +5,7 @@ public class BlogQuery {
     private String title;
     private Long typeId;
     private boolean recommend;
-
-    public BlogQuery() {
-    }
+    private boolean published;
 
     @Override
     public String toString() {
@@ -15,7 +13,19 @@ public class BlogQuery {
                 "title='" + title + '\'' +
                 ", typeId=" + typeId +
                 ", recommend=" + recommend +
+                ", published=" + published +
                 '}';
+    }
+
+    public boolean isPublished() {
+        return published;
+    }
+
+    public void setPublished(boolean published) {
+        this.published = published;
+    }
+
+    public BlogQuery() {
     }
 
     public String getTitle() {

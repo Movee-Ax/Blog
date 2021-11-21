@@ -11,8 +11,8 @@
     <div class="ui attached pointing menu">
         <div class="ui container">
             <div class="right menu">
-                <a href="#" class="item">发布</a>
-                <a href="#" class="active teal item">列表</a>
+                <a href="#" th:href="@{/admin/blogs/input}" class="item">发布</a>
+                <a href="#" th:href="@{/admin/blogs}" class="active teal item">列表</a>
             </div>
         </div>
     </div>
@@ -21,24 +21,38 @@
 
     <!--中间内容开始------------------------------------------>
     <div class="m-container-small m-padded-large">
+        <div class="ui top attached segment">
+            <div class="ui middle aligned middle aligned two column grid">
+                <div class="column">
+                    <h3 class="ui teal header">博客</h3>
+                </div>
+                <div class="right aligned column">
+                    共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${page.totalElements}"></h2> 篇
+                </div>
+            </div>
+        </div>
         <div class="ui container">
             <!--中间内容上面的开搜索始 ---->
-            <div method="post" class="ui secondary segment form">
+            <div class="ui secondary segment  form">
                 <input type="hidden" name="page">
                 <div class="inline fields">
                     <div class="field">
                         <input type="text" name="title" placeholder="标题">
                     </div>
                     <div class="field">
-                        <div class="ui selection dropdown">
-                            <input type="hidden" name="typeId">
-                            <i class="dropdown icon"></i>
-                            <div class="default text">分类</div>
-                            <div class="menu">
-                                <div th:each="type : ${types}" class="item" th:data-value="${type.id}" th:text="${type.name}"></div>
+                        <div class="ui labeled action input">
+                            <div class="ui type selection dropdown">
+                                <input type="hidden" name="typeId">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">分类</div>
+                                <div class="menu">
+                                    <div th:each="type : ${types}" class="item" th:data-value="${type.id}" th:text="${type.name}"></div>
+                                </div>
                             </div>
                         </div>
+                        <button id="clear-btn" class="ui clear button">clear</button>
                     </div>
+
                     <div class="field">
                         <div class="ui checkbox">
                             <input type="checkbox" id="recommend" name="recommend">
@@ -61,6 +75,7 @@
                         <th>标题</th>
                         <th>类型</th>
                         <th>推荐</th>
+                        <th>是否发布</th>
                         <th>更新时间</th>
                         <th>操作</th>
                     </tr>
@@ -69,20 +84,20 @@
                     <tr th:each="blog, iterStat : ${page.content}">
                         <td th:text="${iterStat.count}">1</td>
                         <td th:text="${blog.title}">springboot开发指南</td>
-                        <!--/*@thymesVar id="name" type=""*/-->
                         <td th:text="${blog.type.name}">springboot</td>
                         <td th:text="${blog.recommend} ? '是':'否'">是</td>
-                        <td>2020-01-02 09:01</td>
+                        <td th:text="${blog.published} ? '发布':'草稿'"></td>
+                        <td th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd HH:mm:ss')}"></td>
                         <td>
-                            <a href="#" th:href="@{/admin/blogs/{id}/input(id=${blogs.id})}" class="ui mini teal basic button">编辑</a>
-                            <a href="#" th:href="@{/admin/blogs/{id}/input(id=${blogs.id})}" class="ui mini red basic button">删除</a>
+                            <a href="#" th:href="@{/admin/blogs/{id}/input(id=${blog.id})}" class="ui mini teal basic button">编辑</a>
+                            <a href="#" th:href="@{/admin/blogs/{id}/delete(id=${blog.id})}" class="ui mini red basic button">删除</a>
                         </td>
                     </tr>
                     </tbody>
                     <!-- 中间内容分页开始 -->
                     <tfoot>
                     <tr>
-                        <th colspan="6">
+                        <th colspan="7">
                             <div class="ui mini pagination menu">
                                 <p th:text="'共' + ${page.totalPages} + '页'" class="item"></p>
                             </div>
@@ -96,6 +111,12 @@
                     </tfoot>
                     <!-- 中间内容分页结束 -->
                 </table>
+
+                <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+                    <i class="close icon"></i>
+                    <div class="header">提示：</div>
+                    <p th:text="${message}"></p>
+                </div>
             </div>
 
             <!-- 中间内容搜索结果结束 -->
@@ -105,57 +126,19 @@
     <!--中间内容结束------------------------------------------>
     <br><br><br><br><br><br><br><br><br>
     <!--底部内容开始-->
-    <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-massive">
-        <div class="ui center aligned container">
-            <div class="ui inverted divided stackable grid">
-                <div class="three wide column">
-                    <div class="ui inverted link list">
-                        <div class="item">
-                            <img th:src="@{/images/wechat.jpg}" class="ui rounded image" alt="" style="width: 110px"/>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="three wide column">
-                    <h4 class="ui inverted header m-text-thin m-text-spaced">最新博客</h4>
-                    <div class="ui inverted link list">
-                        <a class="item" href="#">testXXXXXXXXX</a>
-                        <a class="item" href="#">testXXXXXXXXX</a>
-                        <a class="item" href="#">testXXXXXXXXX</a>
-                        <a class="item" href="#">testXXXXXXXXX</a>
-                    </div>
-                </div>
-                <div class="three wide column">
-                    <h4 class="ui inverted header m-text-thin m-text-spaced">联系我</h4>
-                    <div class="ui inverted link list">
-                        <a class="item" href="#">Email: 2753114732@qq.com</a>
-                        <a class="item" href="#">QQ: 2753114732</a>
-                    </div>
-                </div>
-                <div class="seven wide column">
-                    <h4 class="ui inverted header m-text-thin m-text-spaced">介绍</h4>
-                    <p class="m-text-thin m-text-spaced m-opacity-mini">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                        XXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
-                </div>
-
-            </div>
-            <div class="ui inverted section divider"></div>
-            <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright 2019 - 2020 Huihua wu</p>
-        </div>
-    </footer>
+    <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-massive"></footer>
     <!--底部内容结束------------------------------------------>
 
 
     <th:block th:replace="_fragments :: script">
-        <script src="../static/dist/jquery/jquery-3.4.1.min.js"></script>
-        <script src="../static/dist/semantic/semantic.min.js"></script>
-        <script src="../static/lib/scrollTo/scrollTo.min.js"></script>
-        <script src="../static/lib/prism/prism.js"></script>
-        <script src="../static/lib/tocbot/tocbot.js"></script>
-        <script src="../static/lib/qrcode/qrcode.min.js"></script>
-        <script src="../static/lib/waypoints/waypoints.min.js"></script>
     </th:block>
 <script>
+    $('.message .close')
+        .on('click', function () {
+            $(this)
+                .closest('.message')
+                .transition('fade');
+        });
     $('.m-menu.m-toggle').click(function () {
         $('.m-item').toggleClass('m-mobile-hide');
     });
@@ -164,18 +147,23 @@
         on : 'hover'
     });
     function page(obj) {
-        $("[name='page']").val($(obj).data("page"));
+        $('[name="page"]').val($(obj).data("page"));
         loaddata();
     }
     $("#search-btn").click(function () {
-       loaddata();
+        $('[name="page"]').val(0);
+        loaddata();
+    });
+    $('#clear-btn').on('click', function () {
+       $('.ui.type.dropdown')
+       .dropdown('clear');
     });
     function loaddata() {
-        $("table-container").load(/*[[@{/admin/blogs/search}]]*/"/admin/blogs/search",{
+        $("#table-container").load(/*[[@{/admin/blogs/search}]]*/"/admin/blogs/search",{
             title : $("[name='title']").val(),
             typeId : $("[name='typeId']").val(),
             recommend : $("[name='recommend']").prop('checked'),
-            page : $("[name='page']").val(),
+            page :$("[name='page']").val()
         });
     }
 </script>

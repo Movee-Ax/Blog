@@ -1,11 +1,15 @@
 package com.example.blog.po;
 
+import org.springframework.boot.context.properties.NestedConfigurationProperty;
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Component
 @Table(name = "t_comment")
 public class Comment {
 
@@ -15,6 +19,7 @@ public class Comment {
     private String nickname;
     private String email;
     private String content;
+    @NestedConfigurationProperty
     private String avatar;
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
@@ -27,6 +32,15 @@ public class Comment {
     @ManyToOne
     private Comment parentComment;
 
+    private boolean adminComment;
+
+    public boolean isAdminComment() {
+        return adminComment;
+    }
+
+    public void setAdminComment(boolean adminComment) {
+        this.adminComment = adminComment;
+    }
 
     public Comment() {
     }

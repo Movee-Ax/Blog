@@ -9,5 +9,10 @@
       "name": "spring.resources.mvc.static-path-pattern",
       "type": "java.lang.String",
       "description": "Description for spring.resources.mvc.static-path-pattern."
+    },
+    {
+      "name": "comment.avatar",
+      "type": "java.lang.String",
+      "description": "Description for comment.avatar."
     }
   ] }
